@@ -58,12 +58,13 @@ model Event{
   name String
   description String
   price Float
-  startDate DateTime
-  city String
+  brand String?
   category String
-  isBegin Boolean
+  inStock Boolean
+  startDate String?
   images Image[]
 }
+
 
 model Review{
   id String @id @default(auto()) @map("_id") @db.ObjectId
@@ -100,6 +101,19 @@ model Order {
   quantity Int
   price Float 
 }
+
+  type CartEventType {
+  id String
+  name String
+  description String
+  category String
+  brand String 
+  selectedImg Image
+  quantity Int
+  price Float 
+  startDate DateTime
+}
+
 
 type Image{
   color String

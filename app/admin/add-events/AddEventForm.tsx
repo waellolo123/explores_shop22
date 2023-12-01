@@ -8,8 +8,8 @@ import Input from "@/app/components/inputs/Input";
 import SelectColor from "@/app/components/inputs/SelectColor";
 import TextArea from "@/app/components/inputs/TextArea";
 import firebaseApp from "@/libs/firebase";
-import { categories } from "@/utils/Categories";
-import { colors } from "@/utils/Colors";
+import { categories, eventCategories } from "@/utils/Categories";
+import { colors, distances } from "@/utils/Colors";
 import { useCallback, useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -30,7 +30,7 @@ export type UploadedImageType = {
   image: string;
 };
 
-const AddEventForm = () => {
+const AddProductForm = () => {
  const router = useRouter();
  const [isLoading, setIsLoading] = useState(false);
  const [images, setImages] = useState<ImageType[] | null>();
@@ -40,11 +40,11 @@ const AddEventForm = () => {
   defaultValues: {
     name: '',
     description: '',
-    startDate: '',
-    city: '',
-    isBegin: false,
+    brand: '',
+    inStock: false,
     images: [],
     price: '',
+    startDate: ''
   }, 
  })
 
@@ -122,7 +122,7 @@ const AddEventForm = () => {
    await handleImageUploads();
    const productData = {...data, images:uploadedImages}
    console.log(productData);
-   axios.post('/api/product', productData).then(()=>{
+   axios.post('/api/event', productData).then(()=>{
     toast.success('product was created');
     setIsProductCreated(true);
     router.refresh();
@@ -166,16 +166,16 @@ useEffect(()=>{
 
   return (
     <>
-     <Heading title="Add Event" />
+     <Heading title="Add Product" />
      <Input id="name" label="Name" disabled={isLoading} register={register} errors={errors} required />
-     <Input id="startDate" label="Start At" disabled={isLoading} type="date" register={register} errors={errors} required />
-     <Input id="city" label="City" disabled={isLoading} register={register} errors={errors} required />
+     <Input id="price" label="Price" disabled={isLoading} type="number" register={register} errors={errors} required />
+     <Input id="startDate" label="Start Date" disabled={isLoading} type="text" register={register} errors={errors} />
      <TextArea id="description" label="Description" disabled={isLoading} register={register} errors={errors} required />
-     <CustomCheckbox id="inStock" register={register} label="This product is in stock" />
+     {/* <CustomCheckbox id="inStock" register={register} label="This product is in stock" /> */}
      <div className="w-full font-medium">
       <div className="mb-2 font-semibold">Select a category</div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-h-[50vh] overflow-y-auto">
-       {categories.map((item)=>{
+       {eventCategories.map((item)=>{
         if(item.label === 'All'){
           return null;
         }
@@ -196,7 +196,7 @@ useEffect(()=>{
         <div className="text-sm">You must upload an image for each of the size selected otherwise your color selection will be ignored.</div>
       </div>
       <div className="grid grid-cols-2 gap-3">
-        {colors.map((item, index)=>{
+        {distances.map((item, index)=>{
           return (<SelectColor key={index} item={item} addImageToState={addImageToState} removeImageFromState={removeImageToState} isProductCreated={false} />)
         })}
       </div>
@@ -206,7 +206,10 @@ useEffect(()=>{
   )
 }
 
-export default AddEventForm
+export default AddProductForm
+
+
+
 
 
 

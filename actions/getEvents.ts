@@ -2,11 +2,14 @@ import prisma from '@/libs/prismadb';
 
 export default async function getUsers(){
   try {
-    const users = await prisma?.user.findMany();
-    return users;
+    const events = await prisma?.event.findMany();
+    return events;
   } catch (error: any) {
-    throw new Error(error)
+     console.log(error);
+     
   }
 }
+
+
 
 
