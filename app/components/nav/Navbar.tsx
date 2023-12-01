@@ -17,7 +17,7 @@ const Navbar = async () => {
         <Container>
           <div className="flex items-center justify-between gap-3 md:gap-0">
             <Link href={"/"}>
-             <Image src={"/images/explores_word.png"} width={150} height={100} alt=""/>
+             <Image src={"/images/explores_word.png"} width={180} height={100} alt=""/>
             </Link>
             <div className="md:block">
                 <button className="bg-slate-700 text-white py-1 px-4 rounded-full border border-slate-700 hover:bg-transparent hover:border-slate-700 hover:text-slate-700 transition"><Link href={"/shop"}>Shop</Link></button>
