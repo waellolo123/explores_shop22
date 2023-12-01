@@ -5,13 +5,12 @@ import HomeBanner from "../components/HomeBanner";
 import ProductCard from "../components/products/ProductCard";
 import getProducts, { IProductParams } from "@/actions/getProducts";
 import NullData from "../components/NullData";
-import Categories from "../components/nav/Categories";
 
-interface HomeProps {
+interface ShopProps {
   searchParams: IProductParams;
 }
 
-export default async function Home({searchParams}: HomeProps) {
+export default async function Shop({searchParams}: ShopProps) {
 
   const products = await getProducts(searchParams);
 

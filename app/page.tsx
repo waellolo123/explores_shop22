@@ -6,11 +6,11 @@ import getProducts, { IProductParams } from "@/actions/getProducts";
 import NullData from "./components/NullData";
 import Container from "./components/Container";
 
-interface ShopProps {
+interface HomeProps {
   searchParams: IProductParams;
 }
 
-export default async function Shop({searchParams}: ShopProps) {
+export default async function Home({searchParams}: HomeProps) {
 
   const products = await getProducts(searchParams);
 

@@ -53,6 +53,18 @@ model Product{
   reviews Review[]
 }
 
+model Event{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  description String
+  price Float
+  startDate DateTime
+  city String
+  category String
+  isBegin Boolean
+  images Image[]
+}
+
 model Review{
   id String @id @default(auto()) @map("_id") @db.ObjectId
   userId String @db.ObjectId
