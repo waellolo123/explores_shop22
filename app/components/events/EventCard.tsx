@@ -3,6 +3,7 @@
 import { truncateText } from "@/utils/truncateText";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { BsTrophy } from "react-icons/bs";
 interface EventCardProps {
   data: any
 }
@@ -22,11 +23,14 @@ const EventCard: React.FC<EventCardProps> = ({data}) => {
         </div>
        <div className="mt-4 font-semibold text-red-600 text-xl">{truncateText(data.name)}</div>
        <div className="">
-       <div className="font-semibold">{data.brand}</div>
+       <div className="font-semibold text-2xl">{data.brand}</div>
        </div>
-       <div className="flex items-center gap-10">
-       <div className="font-semibold">${data.price}</div>
-       <div className="font-semibold">start date: {data.startDate}</div>
+       <div className="font-semibold text-xl flex items-center gap-5">
+        <BsTrophy />
+        ${data.price}
+        </div>
+       <div className="">
+       <div className="font-semibold text-red-500"><span className="text-slate-700">start date:</span> {data.startDate}</div>
        </div>
        <div className="font-semibold">{data.description}</div>
      </div>
