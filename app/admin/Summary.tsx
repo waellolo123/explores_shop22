@@ -1,6 +1,6 @@
 'use client';
 
-import { Order, Product, User } from "@prisma/client";
+import { Event, Order, Product, User } from "@prisma/client";
 import { useEffect, useState } from "react";
 import Heading from "../components/Heading";
 import { formatPrice } from "@/utils/formatPrice";
@@ -10,6 +10,7 @@ interface SummaryProps{
   orders: Order[];
   products: Product[];
   users: User[];
+  events: Event[];
 }
 
 type SummaryDataType = {
@@ -19,7 +20,7 @@ type SummaryDataType = {
   }
 }
 
-const Summary: React.FC<SummaryProps> = ({orders, products, users}) => {
+const Summary: React.FC<SummaryProps> = ({orders, products, users, events}) => {
 
   const [summaryData, setSummaryData] = useState<SummaryDataType>({
     sale: {
@@ -45,7 +46,12 @@ const Summary: React.FC<SummaryProps> = ({orders, products, users}) => {
     users: {
       label: 'Total Users',
       digit: 0
+    },
+    events: {
+      label: 'Total Events',
+      digit: 0
     }
+
   })
 
   useEffect(()=>{
@@ -71,10 +77,11 @@ const Summary: React.FC<SummaryProps> = ({orders, products, users}) => {
       tempData.unpaidOrders.digit = unpaidOrders.length;
       tempData.users.digit = users.length;
       tempData.products.digit = products.length;
+      tempData.events.digit = events.length;
 
       return tempData;
     })
-  },[orders, products, users])
+  },[orders, products, users, events])
 
   const summaryKeys = Object.keys(summaryData);
     
