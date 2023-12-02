@@ -38,20 +38,15 @@ export const distances = [
     image: null,
   },
   {
-    color: 'image 3',
+    color: 'logo 1',
     colorCode: '#FFFFFF',
     image: null,
   },
   {
-    color: 'image 4',
+    color: 'logo 2',
     colorCode: '#FFFFFF',
     image: null,
   },
-  {
-    color: 'image 5',
-    colorCode: '#FFFFFF',
-    image: null,
-  }
 ]
 
 

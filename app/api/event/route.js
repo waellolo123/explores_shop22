@@ -4,7 +4,7 @@ import prisma from '@/libs/prismadb';
 import { NextResponse } from 'next/server';
 
 
-export async function POST(request: Request){
+export async function POST(request){
 
   const currentUser = await getCurrentUser()
 
@@ -33,7 +33,7 @@ export async function POST(request: Request){
   }
   
   
-export async function PUT(request: Request){
+export async function PUT(request){
    const currentUser = await getCurrentUser();
    if(!currentUser || currentUser.role !== 'ADMIN'){
     return NextResponse.error();

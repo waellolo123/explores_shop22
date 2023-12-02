@@ -70,7 +70,7 @@ const ManageEventsClient = ({events}) => {
     }
     await handleImageDelete();
 
-    axios.delete(`/api/product/${id}`).then((res)=>{
+    axios.delete(`/api/event/${id}`).then((res)=>{
       toast.success('event deleted');
       router.refresh();
     }).catch((error)=>{

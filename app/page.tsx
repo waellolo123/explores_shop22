@@ -15,9 +15,7 @@ export default async function Home({searchParams}: HomeProps) {
 
   const products = await getProducts(searchParams);
   const events = await getEvents();
-  console.log(events);
   
-
   if(products.length === 0){
     return <NullData title="Oops! No products found. Click All to clear filters"/>
   }

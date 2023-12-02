@@ -44,7 +44,7 @@ const AddProductForm = () => {
     inStock: false,
     images: [],
     price: '',
-    startDate: ''
+    startDate: '',
   }, 
  })
 
@@ -123,7 +123,7 @@ const AddProductForm = () => {
    const productData = {...data, images:uploadedImages}
    console.log(productData);
    axios.post('/api/event', productData).then(()=>{
-    toast.success('product was created');
+    toast.success('Event was created');
     setIsProductCreated(true);
     router.push('/');
     router.refresh();
@@ -172,6 +172,7 @@ useEffect(()=>{
      <Input id="name" label="Name" disabled={isLoading} register={register} errors={errors} required />
      <Input id="price" label="Price" disabled={isLoading} type="number" register={register} errors={errors} required />
      <Input id="startDate" label="Start Date" disabled={isLoading} type="text" register={register} errors={errors} />
+     <Input id="brand" label="City informations" disabled={isLoading} type="text" register={register} errors={errors} />
      <TextArea id="description" label="Description" disabled={isLoading} register={register} errors={errors} required />
      {/* <CustomCheckbox id="inStock" register={register} label="This product is in stock" /> */}
      <div className="w-full font-medium">

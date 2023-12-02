@@ -3,7 +3,6 @@
 import { formatPrice } from "@/utils/formatPrice";
 import { truncateText } from "@/utils/truncateText";
 import Image from "next/image";
-import {Rating} from "@mui/material";
 import { useRouter } from "next/navigation";
 interface EventCardProps {
   data: any
@@ -18,14 +17,24 @@ const EventCard: React.FC<EventCardProps> = ({data}) => {
        <div className="aspect-square overflow-hidden relative w-full">
         <Image src={data.images[0].image} fill className="w-full h-full object-cover" alt=""/>
         </div>
+        <div className="w-full flex items-center justify-center gap-8 mt-2">
+         <Image src={data?.images[3]?.image} width={80} height={50} className=" h-full object-cover" alt=""/>
+         <Image src={data?.images[2]?.image} width={80} height={50} className=" h-full object-cover" alt=""/>
+        </div>
        <div className="mt-4 font-semibold text-red-600 text-xl">{truncateText(data.name)}</div>
        <div className="">
+       <div className="font-semibold">{data.brand}</div>
        </div>
-       <div className="font-semibold">{formatPrice(data.price)}</div>
+       <div className="flex items-center gap-10">
+       <div className="font-semibold">${data.price}</div>
        <div className="font-semibold">start date: {data.startDate}</div>
+       </div>
+       <div className="font-semibold">{data.description}</div>
      </div>
     </div>
   )
 }
 
 export default EventCard
+
+

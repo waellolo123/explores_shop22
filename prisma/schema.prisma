@@ -57,7 +57,7 @@ model Event{
   id String @id @default(auto()) @map("_id") @db.ObjectId
   name String
   description String
-  price Float
+  price Int
   brand String?
   category String
   inStock Boolean
