@@ -125,11 +125,13 @@ const AddProductForm = () => {
    axios.post('/api/event', productData).then(()=>{
     toast.success('product was created');
     setIsProductCreated(true);
+    router.push('/');
     router.refresh();
    }).catch((error)=>{
     toast.error('something went wrong')
    }).finally(()=>{
     setIsLoading(false);
+
    })
    
  };
@@ -166,7 +168,7 @@ useEffect(()=>{
 
   return (
     <>
-     <Heading title="Add Product" />
+     <Heading title="Add Event" />
      <Input id="name" label="Name" disabled={isLoading} register={register} errors={errors} required />
      <Input id="price" label="Price" disabled={isLoading} type="number" register={register} errors={errors} required />
      <Input id="startDate" label="Start Date" disabled={isLoading} type="text" register={register} errors={errors} />

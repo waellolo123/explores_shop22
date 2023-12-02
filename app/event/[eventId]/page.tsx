@@ -5,33 +5,31 @@ import getProductById from "@/actions/getProductById"
 import NullData from "@/app/components/NullData"
 import AddRating from "./AddRating"
 import { getCurrentUser } from "@/actions/getCurrentUser"
+import getEventById from "@/actions/getEventById"
 
 
 interface IParams {
-  productId?: string
+  eventId?: string
 }
 
-const Product = async ({params} : {params:IParams}) => {
+const Event = async ({params} : {params:IParams}) => {
   const user = await getCurrentUser();
 
- const product = await getProductById(params);
+ const event = await getEventById(params);
 
- if(!product){
+ if(!event){
   return <NullData title="No Product with this ID" />
  }
 
   return (
     <div className="p-8">
      <Container>
-      <ProductDetails product={product}/>
+      <ProductDetails event={event}/>
       <div className="flex flex-col mt-20 gap-4">
-        <AddRating product={product} user={user} />
-        <ListRating product={product} />
       </div>
      </Container>
     </div>
   )
 }
 
-export default Product
-
+export default Event;

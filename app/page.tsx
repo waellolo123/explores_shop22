@@ -1,11 +1,11 @@
 export const revalidate = 0;
 
 import HomeHomeBanner from "./components/HomeHomeBanner";
-import ProductCard from "./components/products/ProductCard";
 import getProducts, { IProductParams } from "@/actions/getProducts";
 import NullData from "./components/NullData";
 import Container from "./components/Container";
 import getEvents from "@/actions/getEvents";
+import EventCard from "./components/events/EventCard";
 
 interface HomeProps {
   searchParams: IProductParams;
@@ -28,9 +28,9 @@ export default async function Home({searchParams}: HomeProps) {
        <div className="">
         <HomeHomeBanner />
        </div>
-       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
+       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         {events?.map((event:any)=>{
-          return <ProductCard key={event.id} data={event} />
+          return <EventCard key={event.id} data={event} />
         })}
        </div>
     </Container>
