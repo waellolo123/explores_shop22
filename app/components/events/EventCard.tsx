@@ -4,6 +4,7 @@ import { truncateText } from "@/utils/truncateText";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { BsTrophy } from "react-icons/bs";
+import { FaPersonRunning } from "react-icons/fa6";
 interface EventCardProps {
   data: any
 }
@@ -21,7 +22,10 @@ const EventCard: React.FC<EventCardProps> = ({data}) => {
          <Image src={data?.images[3]?.image} width={80} height={50} className="w-full h-full object-cover" alt=""/>
          <Image src={data?.images[2]?.image} width={80} height={50} className="w-full h-full object-cover" alt=""/>
         </div>
-       <div className="mt-4 font-semibold text-red-600 text-xl">{truncateText(data.name)}</div>
+       <div className="mt-4 font-semibold text-red-600 text-xl flex items-center gap-1">
+       <FaPersonRunning />
+        {truncateText(data.name)}
+        </div>
        <div className="">
        <div className="font-semibold text-2xl">{data.brand}</div>
        </div>
