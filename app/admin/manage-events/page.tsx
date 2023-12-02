@@ -1,9 +1,28 @@
+import getProducts from "@/actions/getProducts"
+import getEvents from "@/actions/getEvents"
+import ManageEventsClient from "./ManageEventsClient";
+import { getCurrentUser } from "@/actions/getCurrentUser"
+import NullData from "@/app/components/NullData";
+import Container from "@/app/components/Container";
 
 
-const ManageEvents = () => {
+const ManageProducts = async () => {
+
+  const products = await getProducts({category: null});
+  const events = await getEvents()
+  const currentUser = await getCurrentUser();
+
+  if(!currentUser || currentUser.role !== 'ADMIN'){
+    return <NullData title='Oops! access denied' />;
+  }
+
   return (
-    <div>ManageEvents</div>
+  
+      <Container>
+       <ManageEventsClient events={events}/>
+      </Container>
+    
   )
 }
 
-export default ManageEvents
+export default ManageProducts;
