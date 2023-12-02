@@ -28,27 +28,27 @@ export const colors = [
 
 export const distances = [
   {
-    color: '10 klm',
+    color: 'image 1',
     colorCode: '#0000',
     image: null,
   },
   {
-    color: '15 klm',
+    color: 'image 2',
     colorCode: '#FF0000',
     image: null,
   },
   {
-    color: '20 klm',
+    color: 'image 3',
     colorCode: '#FFFFFF',
     image: null,
   },
   {
-    color: '30 klm',
+    color: 'image 4',
     colorCode: '#FFFFFF',
     image: null,
   },
   {
-    color: '50 klm',
+    color: 'image 5',
     colorCode: '#FFFFFF',
     image: null,
   }

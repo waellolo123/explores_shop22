@@ -194,8 +194,7 @@ useEffect(()=>{
      </div>
      <div className="w-full flex flex-col flex-wrap gap-4">
       <div className="">
-        <div className="font-bold">Select the available product sizes and upload their images.</div>
-        <div className="text-sm">You must upload an image for each of the size selected otherwise your color selection will be ignored.</div>
+        <div className="font-bold">Select the Images relatives to this event</div>
       </div>
       <div className="grid grid-cols-2 gap-3">
         {distances.map((item, index)=>{
