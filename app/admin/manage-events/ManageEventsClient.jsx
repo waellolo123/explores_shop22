@@ -12,14 +12,11 @@ import { useRouter } from 'next/navigation';
 import { deleteObject, getStorage, ref } from 'firebase/storage';
 import firebaseApp from '@/libs/firebase';
 
-interface ManageEventsClientProps{
-  events: Event[];
-}
 
-const ManageEventsClient: React.FC<ManageEventsClientProps> = ({events}) => {
+const ManageEventsClient = ({events}) => {
   const router = useRouter();
   const storage = getStorage(firebaseApp);
-  let rows: any = [];
+  let rows;
 
   if(events){
     rows = events.map((event)=>{
@@ -35,7 +32,7 @@ const ManageEventsClient: React.FC<ManageEventsClientProps> = ({events}) => {
     })
   }
 
-  const columns: GridColDef[] = [
+  const columns = [
     {field: 'id', headerName: 'ID', width: 220},
     {field: 'name', headerName: 'Name', width: 220},
     {field: 'price', headerName: 'Price(USD)', width: 100, renderCell: (params)=> {
@@ -55,8 +52,8 @@ const ManageEventsClient: React.FC<ManageEventsClientProps> = ({events}) => {
 
   ]
 
-  const handleDelete = useCallback(async(id: string, images: any[])=>{
-    toast('Deleting event, please wait!');
+  const handleDelete = useCallback(async(id, images)=>{
+    toast('Deleting event, please wait!')
     const handleImageDelete = async () => {
       try {
         for(const item of images){
